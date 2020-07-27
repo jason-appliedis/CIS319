@@ -17,7 +17,7 @@
         <Image url="@inheratence.jpg" />
       </image>
     </ImageView>
-    <Label text="Jason - CIS319">
+    <Label text=" - CIS319">
       <font>
         <Font name="System Bold Italic" size="30.0" />
       </font>

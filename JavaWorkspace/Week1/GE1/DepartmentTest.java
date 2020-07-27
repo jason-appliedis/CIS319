@@ -31,7 +31,7 @@ public class DepartmentTest {
             brickAndMorterEmpArr
         ); 
 
-        System.out.println("\n\n\nJason Stoddard Graded Programming Exercise 1.1");
+        System.out.println("\n\n\n Graded Programming Exercise 1.1");
 
         System.out.printf("%n%s:%n %n%s%s %n%s%s %n%s",
         "Online Sales",

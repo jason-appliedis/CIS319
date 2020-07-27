@@ -13,7 +13,7 @@ public class EmployeeTest {
         empArray[8] = new SalariedEmployee("Fred","Jordan", "555-44-55555", 55000);
         empArray[9] = new SalariedEmployee("Ned","Flanders", "666-66-6666", 66000);
 
-        System.out.println("\n\n\nJason Stoddard Graded Programming Excersise 1.2");
+        System.out.println("\n\n\ Graded Programming Excersise 1.2");
 
         for(int i = 0; i < 10; i++){
             System.out.printf("%n%s%n", empArray[i]);

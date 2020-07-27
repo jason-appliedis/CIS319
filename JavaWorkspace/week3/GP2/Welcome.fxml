@@ -11,7 +11,7 @@
 
 <VBox alignment="CENTER" prefHeight="300.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <Label text="Welcome to JavaFX! Jason">
+    <Label text="Welcome to JavaFX! ">
       <font>
         <Font name="System Bold" size="30.0" />
       </font>

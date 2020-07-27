@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class BinaryFileOutput {
-    private static final String myName = "Jason";
+    private static final String myName = "";
     public static void writeToFile() throws IOException
 	{
 		FileOutputStream outStream = new FileOutputStream(myName + ".dat");

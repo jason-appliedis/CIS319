@@ -7,7 +7,7 @@ public class FunWithRecursion {
             System.exit(0);
 		}
 		
-        System.out.println("Jason | CIS319 | Unit 5 Guided Practice 1");
+        System.out.println(" CIS319 | Unit 5 Guided Practice 1");
 
         rocketCountdown(numToCount);
 
