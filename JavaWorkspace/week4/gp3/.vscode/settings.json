@@ -2,8 +2,7 @@
     "java.project.referencedLibraries": {
         "include": [
             "lib/**/*.jar",
-            "c:\\Users\\Jason.Stoddard\\Desktop\\CIS319\\JavaWorkspace\\lib\\Microsoft_SQL_jdbc_8.2\\enu\\mssql-jdbc-8.2.2.jre13.jar",
-            "c:\\Users\\Jason.Stoddard\\Desktop\\CIS319\\JavaWorkspace\\lib\\Microsoft_SQL_jdbc_8.2\\enu\\mssql-jdbc-8.2.2.jre11.jar"
+            "{path to jdbc}"
         ],
         "exclude": [
             "lib/mysql-connector-java-8.0.21.jar"
