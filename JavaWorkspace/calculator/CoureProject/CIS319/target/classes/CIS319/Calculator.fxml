@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="350.0" onKeyPressed="#handleKeyPress"  prefHeight="350.0" style="-fx-border-radius: 2px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CIS319.CalculatorController">
+<AnchorPane maxHeight="350.0" onKeyPressed="#handleKeyPress" prefHeight="350.0" style="-fx-border-radius: 2px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CIS319.CalculatorController">
    <children>
       <TitledPane style="-fx-background-color: #125A97;" text="CalcWiz" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -60,7 +60,7 @@
                         </AnchorPane>
                         <AnchorPane GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <children>
-                              <Button fx:id="divide" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setTextOnButtonClick" prefHeight="70.0" prefWidth="167.0" style="-fx-border-radius: 2px;" text="/" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                              <Button fx:id="DIVIDE" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setTextOnButtonClick" prefHeight="70.0" prefWidth="167.0" style="-fx-border-radius: 2px;" text="/" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Segoe UI" size="15.0" />
                                  </font>
@@ -98,7 +98,7 @@
                         </AnchorPane>
                         <AnchorPane GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <children>
-                            <Button fx:id="multiply" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setTextOnButtonClick" prefHeight="70.0" prefWidth="167.0" style="-fx-border-radius: 2px;" text="*" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                            <Button fx:id="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setTextOnButtonClick" prefHeight="70.0" prefWidth="167.0" style="-fx-border-radius: 2px;" text="*" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                <font>
                                   <Font name="Segoe UI" size="15.0" />
                                </font>
@@ -136,7 +136,7 @@
                         </AnchorPane>
                         <AnchorPane GridPane.columnIndex="3" GridPane.rowIndex="3">
                            <children>
-                            <Button fx:id="minus" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setTextOnButtonClick" prefHeight="70.0" prefWidth="167.0" style="-fx-border-radius: 2px;" text="-" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                            <Button fx:id="MINUS" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setTextOnButtonClick" prefHeight="70.0" prefWidth="167.0" style="-fx-border-radius: 2px;" text="-" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                <font>
                                   <Font name="Segoe UI" size="15.0" />
                                </font>
@@ -177,7 +177,7 @@
                         </AnchorPane>
                         <AnchorPane GridPane.columnIndex="3" GridPane.rowIndex="4">
                            <children>
-                             <Button fx:id="plus" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setTextOnButtonClick" prefHeight="66.0" prefWidth="149.0" style="-fx-border-radius: 2px;" text="+" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                             <Button fx:id="ADD" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setTextOnButtonClick" prefHeight="66.0" prefWidth="149.0" style="-fx-border-radius: 2px;" text="+" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
                                 <font>
                                    <Font name="Segoe UI" size="15.0" />
                                 </font>
@@ -215,7 +215,7 @@
                         </AnchorPane>
                         <AnchorPane maxHeight="75.0" minHeight="75.0" GridPane.columnSpan="2147483647">
                            <children>
-                              <TextArea fx:id="numberDisplay" layoutX="300.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="75.0" prefWidth="300.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnSpan="2147483647">
+                              <TextArea fx:id="numberDisplay" editable="false" layoutX="300.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="75.0" prefWidth="300.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnSpan="2147483647">
                                  <font>
                                     <Font name="Segoe UI" size="36.0" />
                                  </font>

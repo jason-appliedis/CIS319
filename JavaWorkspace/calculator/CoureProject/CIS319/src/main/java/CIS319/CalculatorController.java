@@ -1,22 +1,16 @@
 package CIS319;
 
-import java.math.BigDecimal;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import CIS319.Math;
 
 public class CalculatorController {
-    private static KeyCode enterKeyCode =  KeyCode.ENTER;
-    private static String firstNumber;
-    private static String secondNumber;
-    private static String operator;
-    private static String stoerNumInMemory;
+    private static String firstNumber = "";
+    private static String secondNumber = "";
+    private static String stoerNumInMemory = "";
+    private static String operator = "";
     @FXML
     private TextArea numberDisplay;
     @FXML
@@ -39,100 +33,110 @@ public class CalculatorController {
 
     @FXML
     private Button memoryClear;
+
     @FXML
     void setTextOnButtonClick(final ActionEvent e) {
         final Button btn = (Button) e.getSource();
-        handleBtnClick(btn);
+        handleCalculatorInputChange(btn.getId(), btn.getText());
     }
 
     @FXML
     private void handleKeyPress(final KeyEvent e) {
-        // look for operators
-        KeyCode operator = e.getCode();
-
-
-        System.out.println(operator);
-
-        // look for enter keycodes
-        // look for any item that is not a digit
-        if (operator == enterKeyCode) {
-            numberDisplay.setText("");
-        }
-        // handleKeyboardOperation(operator, )
+        handleCalculatorInputChange(e.getCode().toString(), e.getText());
     }
-    // public void handleKeyboardOperation(KeyCode operator, String num){
 
-    // }
-
-    public void handleBtnClick(final Button btn) {
-        switch (btn.getId()) {
+    //takes a generic to allow handling of keycodes and normal strings 
+    //optional values to handle logic if the buttons are pressed or if the keys are pressed
+    public <T> void handleCalculatorInputChange(final T btnPressed, final String btnTextValue) {
+        switch ((String) btnPressed) {
             case "memoryClear":
                 stoerNumInMemory = "0";
                 break;
             case "memoryRecall":
-                    numberDisplay.setText(stoerNumInMemory);
+                numberDisplay.setText(stoerNumInMemory);
                 break;
             case "addMemory":
                 stoerNumInMemory = numberDisplay.getText();
-                //clear text area
+                // clear text area
                 numberDisplay.setText("");
                 break;
             case "clear":
-                //clear text area
+                // clear text area
                 numberDisplay.setText("");
                 break;
             case "clearEverything":
-                stoerNumInMemory ="";
+                stoerNumInMemory = "";
+                restCalcVariables();
                 numberDisplay.setText("");
                 break;
             case "isNegative":
-                if(numberDisplay.getText().contains("-")){
-                    numberDisplay.setText(numberDisplay.getText().replace("-",""));
-                }else{
-                    numberDisplay.setText(numberDisplay.getText());
+                if (numberDisplay.getText().contains("-")) {
+                    numberDisplay.setText(numberDisplay.getText().replace("-", ""));
+                } else {
+                    final String tempNegDisplay = "-" + numberDisplay.getText();
+                    numberDisplay.setText(tempNegDisplay);
                 }
                 break;
-            case "multiply":
-            case "divide":
-            case "minus":
-            case "plus":
-            System.out.println(btn.getId());
-                if(firstNumber.length()<=0){
+            case "ADD":
+            case "SUBTRACT":
+            case "MULTIPLY":
+            case "DIVIDE":
+                operator = (String) btnPressed;
+                if (firstNumber.isEmpty()) {
                     firstNumber = numberDisplay.getText();
-                }else{
+                    numberDisplay.setText("");
+                } else if (secondNumber.isEmpty()) {
+                    numberDisplay.setText(firstNumber);
+                } else {
                     secondNumber = numberDisplay.getText();
+                    // used to reset first calue in the event that the use is still typeing numbers
+                    // and operators
+                    final String tempResult = Math.calculateTotal(firstNumber, secondNumber, operator).toString();
+                    numberDisplay.setText(tempResult);
+                    restCalcVariables();
+                    firstNumber = tempResult;
                 }
-                operator = btn.getId();
-                numberDisplay.setText("0");
                 break;
             case "equals":
-                Math.calculateTotal(firstNumber,secondNumber,operator);
+            case "ENTER":
+                if (secondNumber.isEmpty()) {
+                    secondNumber = "0";
+                }
+                secondNumber = numberDisplay.getText();
+                final String tempResult = Math.calculateTotal(firstNumber, secondNumber, operator).toString();
+                numberDisplay.setText(tempResult);
+                restCalcVariables();
+                firstNumber = tempResult;
                 break;
             case "decimal":
-                System.out.println(numberDisplay.getText());
+            case "DECIMAL" :
                 if (!numberDisplay.getText().contains(".")) {
-                    final String textToSet = numberDisplay.getText() + btn.getText();
-                System.out.println(textToSet);
-
-                    numberDisplay.setText(textToSet);
+                    numberDisplay.setText(numberDisplay.getText() + btnTextValue);
                 }
                 break;
             default:
-                
-                numberDisplay.setText(numberDisplay.getText() + btn.getText());
+            if (firstNumber.isEmpty() && !operator.isEmpty()) {
+                firstNumber = firstNumber + btnTextValue;
+                numberDisplay.setText(firstNumber);
+            } else if (secondNumber.isEmpty() && !operator.isEmpty()) {
+                secondNumber = btnTextValue;
+                numberDisplay.setText(secondNumber);
+            } else {
+                numberDisplay.setText(numberDisplay.getText() + btnTextValue); 
+            }
                 break;
         }
     }
 
-    public void initialize() {
-        numberDisplay.textProperty().addListener(new ChangeListener<String>() {  
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                //remove duplicate period
-                if(newValue.split("[.]+").length > 2){
-                    numberDisplay.setText(oldValue);
-                }
-            }
-        });
+    // resetes the class members to clear out the calculator
+    private static void restCalcVariables() {
+        secondNumber = "";
+        firstNumber = "";
+        stoerNumInMemory = "0";
     }
+
+    public void initialize() {
+        numberDisplay.requestFocus();
+    }
+
 }

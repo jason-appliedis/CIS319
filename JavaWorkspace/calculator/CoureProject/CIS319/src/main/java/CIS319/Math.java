@@ -2,12 +2,9 @@ package CIS319;
 
 import java.math.BigDecimal;
 
-public class Math{
-
-    public static BigDecimal calculateTotal(String valOne,String valTwo, String operator){
-        System.out.println(valOne);
-        System.out.println(valTwo);
-        System.out.println(operator);
+public class Math {
+    
+    public static <T> BigDecimal calculateTotal(String valOne,String valTwo, T operator){
         if(!valOne.contains(".")){
             valOne = valOne + ".0";
         }
@@ -17,17 +14,17 @@ public class Math{
         BigDecimal valOneAsBd = new BigDecimal(valOne);
         BigDecimal valTwoAsBd = new BigDecimal(valTwo);
         BigDecimal result = new BigDecimal("0.00");
-        switch(operator){
-            case "multiply":
+        switch((String) operator){
+            case "MULTIPLY":
                 result = multiplyValues(valOneAsBd,valTwoAsBd);
                 break;
-            case "divide":
+            case "DIVIDE":
                 result = divideValues(valOneAsBd,valTwoAsBd);
                 break;
-            case "minus":
+            case "SUBTRACT":
                 result = subtractValues(valOneAsBd,valTwoAsBd);
                 break;
-            case "plus":
+            case "ADD":
                 result = addValues(valOneAsBd,valTwoAsBd);
                 break;
             default : break;
